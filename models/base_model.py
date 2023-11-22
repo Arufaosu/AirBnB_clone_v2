@@ -1,16 +1,22 @@
 #!/usr/bin/python3
 """This module defines a base class for all models in our hbnb clone"""
-import uuid
+import models
+from uuid import uuid4
 from datetime import datetime
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column
+from sqlalchemy import DateTime
+from sqlalchemy import String
+
 
 Base = declarative_base()
 
 class BaseModel:
     """A base class for all hbnb models"""
 
-    id = Coloumn(String(60), primary_key=True, nullable=False)
+    id = Column(String(60), primary_key=True, nullable=False)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow())
-    updated_at = Column(DateTimne, nullable=False, default=datetime.utcnow())
+    updated_at = Column(DateTime, nullable=False, default=datetime.utcnow())
 
     def __init__(self, *args, **kwargs):
         """Instatntiates a new model"""
@@ -18,8 +24,8 @@ class BaseModel:
         self.created_at = self.updated_at = datetime.utcnow()
         if kwargs:
             for key, value in kwargs.items():
-                if key == "crwated_at" or key == "updated_at":
-                    value = datetime.strptime(value, "%Y-%m-%dT%H:%S.%f")
+                if key == "created_at" or key == "updated_at":
+                    value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 if key != "__class__":
                     setattr(self, key, value)
 
