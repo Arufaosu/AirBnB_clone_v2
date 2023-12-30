@@ -6,8 +6,14 @@ app = Flask(__name__)
 
 @app.route('/', strict_slashes=False)
 def hello_hbnb():
-    """ printsa message """
+    """ prints message """
     return 'Hello HBNB!'
+
+
+@app.route('/hbnb', strict_slashes=False)
+def hbnb():
+    """ prints message """
+    return 'HBNB'
 
 if __name__ == "__main__":
     """ main func """
