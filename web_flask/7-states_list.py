@@ -5,6 +5,8 @@ from flask import Flask, render_template
 from models import *
 from models import storage
 app = Flask(__name__)
+classes = {"Amenity": Amenity, "City": City,
+           "Place": Place, "Review": Review, "State": State, "User": User}
 
 
 @app.route('/states_list', strict_slashes=False)
@@ -21,15 +23,3 @@ def teardown_db(exception):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='5000')
-
-web_flask/8-cities_by_states.py
-
-#!/usr/bin/python3
-"""
-starts a Flask web application
-"""
-
-from flask import Flask, render_template
-from models import *
-from models import storage
-app = Flask(__name__)
