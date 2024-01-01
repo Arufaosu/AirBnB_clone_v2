@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""defines dbstorage engine"""
+"""Defines the DBStorage engine."""
 from os import getenv
 from models.base_model import Base
 from models.base_model import BaseModel
@@ -15,9 +15,13 @@ from sqlalchemy.orm import scoped_session
 from sqlalchemy.orm import sessionmaker
 
 
-
 class DBStorage:
-    """presents a database storage engine"""
+    """Represents a database storage engine.
+
+    Attributes:
+        __engine (sqlalchemy.Engine): The working SQLAlchemy engine.
+        __session (sqlalchemy.Session): The working SQLAlchemy session.
+    """
 
     __engine = None
     __session = None
@@ -78,4 +82,3 @@ class DBStorage:
     def close(self):
         """Close the working SQLAlchemy session."""
         self.__session.close()
-

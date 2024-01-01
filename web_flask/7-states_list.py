@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-""" starts a Flask web application """
+"""
+starts a Flask web application
+"""
 
 from flask import Flask, render_template
 from models import *
 from models import storage
 app = Flask(__name__)
-classes = {"Amenity": Amenity, "City": City,
-           "Place": Place, "Review": Review, "State": State, "User": User}
 
 
 @app.route('/states_list', strict_slashes=False)
